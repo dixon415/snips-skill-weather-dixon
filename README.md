@@ -1,69 +1,39 @@
-# Snips Weather TTS action
+# OpenWeatherMap action for Snips
+
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/snipsco/snips-skill-owm/master/LICENSE.txt)
 
-This is a Snips weather action written in Python and is compatible with `snips-skill-server`.
-It is meant to be used as a demo in the `snips-platform-demo` package.
-This action subscribes to all intents and only parses the weather intents. The result is then spoken through TTS.
+## Installation with Sam
 
-This action won't give you a weather result, check [snips-skill-owm](https://github.com/snipsco/snips-skill-owm) for this.
+The easiest way to use this Action is to install it with [Sam](https://snips.gitbook.io/getting-started/installation)
 
-## Skill Setup
-### Prerequisites
+`sam install actions -g https://github.com/snipsco/snips-skill-owm.git`
 
-You'll need to add the Weather english skill in your assistant. It's available on [Snips' console](https://console.snips.ai)
+Sam will then ask you for an OpenWeatherMap API key. You can create one by signing up to [OpenWeatherMap](https://openweathermap.org)
 
-### SAM (preferred)
-To install the action on your device, you can use [Sam](https://snips.gitbook.io/getting-started/installation)
+The action works with the English Weather skill that you can download on [Snips' console](https://console.snips.ai)
 
-`sam install action -g https://github.com/snipsco/snips-skill-weather-tts.git`
+## Locale
+> ***BEWARE: Please do not forget that you have to specify one of the following values as the locale setting during the installation. If you install it manually, please do give this setting to `config.ini` -> `locale=`. Otherwise, it will not work as expected.***
 
-### Manually
+To have the skills properly working, you **need** to generate locales for your languages.  So far the supported locales are:
 
-Copy it manually to the device to the folder `/var/lib/snips/skills/`
-You'll need `snips-skill-server` installed on the pi
+- 🇺🇸 `en_US`
+- 🇫🇷 `fr_FR`
+- 🇪🇸 `es_ES`
 
-`sudo apt-get install snips-skill-server`
+You can generate them with `sudo raspi-config`. Going in the `Localisation Options` submenu, then in the `Change Locale` submenu, and selecting the locales you want to support. For instance, select `en_US UTF-8` if you want support for English. 
 
-Stop snips-skill-server & generate the virtual environment
-```
-sudo systemctl stop snips-skill-server
-cd /var/lib/snips/skills/snips-skill-weather-tts/
-sh setup.sh
-sudo systemctl start snips-skill-server
-```
+## Manual installation
 
-## Setup with APT
+- Clone the repository on your Pi
+- Run `setup.sh` (it will create a virtualenv, install the dependencies in it and rename config.ini.default to config.ini)
+- Provide an OpenWeatherMap API key in the config.ini
+- Run `action-owm.py`
 
-The APT package contains only the weather assistant.
-The assistant will be placed in `/usr/share/snips/assistant`.
+## Contributing
 
-`sudo apt-get install snips-platform-demo`
+Please see the [Contribution Guidelines](https://github.com/snipsco/snips-skill-owm/blob/master/CONTRIBUTING.md).
 
-The skill need to be installed manually.
+## Copyright
 
-## Full demo installation with SAM
-
-`sam install demo` install the assistants and this skill on your device.
-
-## How to trigger
-
-`Hey Snips`
-
-`What will be the weather in London in two days?`
-
-## Logs
-Show snips-skill-server logs with sam:
-
-`sam service log snips-skill-server`
-
-Or on the device:
-
-`journalctl -f -u snips-skill-server`
-
-Check general platform logs:
-
-`sam watch`
-
-Or on the device:
-
-`snips-watch`
+This action is provided by [Snips](https://www.snips.ai) as Open Source software. See [LICENSE.txt](https://github.com/snipsco/snips-skill-owm/blob/master/LICENSE.txt) for more information.
