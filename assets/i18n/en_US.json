@@ -2,8 +2,8 @@
     "error": {
         "doNotUnderstand": "Sorry, I dont think I understood."
     },
-    "relayTurnOn": "Relay has been turned on.",
-    "relayTurnOff": "Relay has been turned off.",
+    "relayTurnOn": "Dixon Relay has been turned on.",
+    "relayTurnOff": "Dixon Relay has been turned off.",
     "checkHumidity": "The current humidity is {{ humidity }}%.",
     "checkTemperature": "The current temperature is {{ temperature }} degrees."
 }
