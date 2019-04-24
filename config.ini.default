@@ -1,6 +1,10 @@
 [global]
+mqtt_host=localhost
+mqtt_port=1883
+site_id=default
+locale=en_US
+relay_gpio_bcm=12
+temperature_unit=celsius
 
-[secret]
-api_key=
-locale=
-default_location=
+[static]
+config_ver=0.2
